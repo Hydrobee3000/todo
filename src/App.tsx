@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
-import { Fab, Typography } from '@mui/material'
+import { Fab, Tooltip, Typography } from '@mui/material'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { Task } from './types'
+import AddIcon from '@mui/icons-material/Add'
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([])
-  const [showAllTasks, setShowAllTasks] = useState(true) // Изменяем начальное состояние на true
+  const [showAllTasks, setShowAllTasks] = useState(true)
   const [showCompleted, setShowCompleted] = useState(false)
   const [showIncomplete, setShowIncomplete] = useState(false)
+  const [showTaskForm, setShowTaskForm] = useState(false) // Добавляем состояние для управления видимостью формы
 
   const createTask = (newTask: Task) => {
     setTasks([...tasks, newTask])
+    setShowTaskForm(false) // Скрываем форму после добавления задачи
   }
 
   const deleteTask = (taskId: number) => {
@@ -57,9 +60,12 @@ const App: React.FC = () => {
       <Typography variant='h2' gutterBottom style={{ textAlign: 'center' }}>
         Список задач
       </Typography>
-
-      <TaskForm onCreateTask={createTask} />
-
+      <Tooltip title='Добавить новую задачу' placement='top-start'>
+        <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='add' onClick={() => setShowTaskForm(true)}>
+          <AddIcon />
+        </Fab>
+      </Tooltip>
+      {showTaskForm && <TaskForm onCreateTask={createTask} />} {/* Отображаем форму, если showTaskForm равен true */}
       <div>
         <label>
           <input type='checkbox' checked={showAllTasks} onChange={handleShowAllTasksChange} />
@@ -74,12 +80,7 @@ const App: React.FC = () => {
           Показать не выполненные задачи
         </label>
       </div>
-      <TaskList
-        tasks={filteredTasks} // Используем отфильтрованные задачи для отображения
-        onDeleteTask={deleteTask}
-        onToggleTask={toggleTask}
-        onUpdateTask={updateTask}
-      />
+      <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
     </div>
   )
 }
