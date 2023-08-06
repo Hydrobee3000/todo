@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography } from '@mui/material'
+import { Fab, Typography } from '@mui/material'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { Task } from './types'
@@ -54,10 +54,12 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Typography variant='h2' gutterBottom>
+      <Typography variant='h2' gutterBottom style={{ textAlign: 'center' }}>
         Список задач
       </Typography>
+
       <TaskForm onCreateTask={createTask} />
+
       <div>
         <label>
           <input type='checkbox' checked={showAllTasks} onChange={handleShowAllTasksChange} />

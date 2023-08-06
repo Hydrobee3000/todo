@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Task } from '../types'
 import TaskEditForm from './TaskEditForm'
-import { Button } from '@mui/material'
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 
 interface TaskItemProps {
   task: Task
@@ -28,27 +28,35 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
   }
 
   return (
-    <div>
+    <Card sx={{ minWidth: 275 }}>
       {isEditing ? (
         <div>
           <TaskEditForm task={task} onSaveTask={handleSaveTask} onCancelEdit={handleCancelEdit} />
         </div>
       ) : (
         <>
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
-          <Button variant='outlined' onClick={() => onToggleTask(task.id)}>
-            {task.completed ? 'Отменить' : 'Выполнить'}
-          </Button>
-          <Button variant='outlined' onClick={handleEditClick}>
-            Редактировать
-          </Button>
-          <Button variant='outlined' onClick={() => onDeleteTask(task.id)}>
-            Удалить
-          </Button>
+          <CardContent>
+            <Typography variant='h3' gutterBottom>
+              {task.title}
+            </Typography>
+            <Typography variant='body1' gutterBottom>
+              {task.description}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button variant='outlined' onClick={() => onToggleTask(task.id)}>
+              {task.completed ? 'Отменить' : 'Выполнить'}
+            </Button>
+            <Button variant='outlined' onClick={handleEditClick}>
+              Редактировать
+            </Button>
+            <Button variant='outlined' onClick={() => onDeleteTask(task.id)}>
+              Удалить
+            </Button>
+          </CardActions>
         </>
       )}
-    </div>
+    </Card>
   )
 }
 
