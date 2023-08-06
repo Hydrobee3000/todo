@@ -43,7 +43,7 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
         />
       </CardContent>
       <CardActions>
-        <Button variant='outlined' type='button' onClick={handleSubmit}>
+        <Button variant='contained' type='button' onClick={handleSubmit}>
           Сохранить
         </Button>
         <Button variant='outlined' type='button' onClick={onCancelEdit}>

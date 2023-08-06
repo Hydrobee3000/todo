@@ -8,12 +8,13 @@ interface TaskFormProps {
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  const [title, setTitle] = useState('') // заголовок
+  const [description, setDescription] = useState('') // описание
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (title.trim()) {
+      // Создание новой задачи и добавление в список задач
       const newTask: Task = { title, description, id: Date.now(), completed: false }
       onCreateTask(newTask)
       setTitle('')
@@ -45,7 +46,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
       />
 
       <div>
-        <Button type='submit' variant='outlined' style={{ marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}>
+        <Button type='submit' variant='contained' style={{ marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}>
           Добавить задачу
         </Button>
         <Button variant='outlined' onClick={onCancelCreate} style={{ width: '7rem' }}>
