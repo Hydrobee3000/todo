@@ -4,9 +4,10 @@ import { TextField, Button } from '@mui/material'
 
 interface TaskFormProps {
   onCreateTask: (newTask: Task) => void
+  onCancelCreate: () => void
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
@@ -42,9 +43,15 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask }) => {
         multiline
         rows={4}
       />
-      <Button type='submit' variant='outlined' style={{ marginLeft: 'auto', marginRight: 'auto', width: '15rem' }}>
-        Добавить задачу
-      </Button>
+
+      <div>
+        <Button type='submit' variant='outlined' style={{ marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}>
+          Добавить задачу
+        </Button>
+        <Button variant='outlined' onClick={onCancelCreate} style={{ width: '7rem' }}>
+          Отменить
+        </Button>
+      </div>
     </form>
   )
 }
