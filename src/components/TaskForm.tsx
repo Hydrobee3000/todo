@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Task } from '../types'
+import { TextField, Button } from '@mui/material'
 
 const TaskForm: React.FC<{ onCreateTask: (newTask: Task) => void }> = ({ onCreateTask }) => {
   const [title, setTitle] = useState('')
@@ -16,9 +17,27 @@ const TaskForm: React.FC<{ onCreateTask: (newTask: Task) => void }> = ({ onCreat
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' placeholder='Введите название задачи' value={title} onChange={(e) => setTitle(e.target.value)} />
-      <textarea placeholder='Введите описание задачи' value={description} onChange={(e) => setDescription(e.target.value)} />
-      <button type='submit'>Добавить задачу</button>
+      <TextField
+        id='outlined-basic'
+        label='Название задачи'
+        variant='outlined'
+        placeholder='Введите название задачи'
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <TextField
+        id='outlined-basic'
+        label='Описание задачи'
+        variant='outlined'
+        placeholder='Введите описание задачи'
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+
+      <Button type='submit' variant='outlined'>
+        Добавить задачу
+      </Button>
     </form>
   )
 }
