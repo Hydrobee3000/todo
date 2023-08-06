@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Task } from '../types'
 import TaskEditForm from './TaskEditForm'
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, Typography, Divider } from '@mui/material'
 
 interface TaskItemProps {
   task: Task
@@ -28,7 +28,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
   }
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275, marginBottom: '1.5rem' }}>
       {isEditing ? (
         <div>
           <TaskEditForm task={task} onSaveTask={handleSaveTask} onCancelEdit={handleCancelEdit} />

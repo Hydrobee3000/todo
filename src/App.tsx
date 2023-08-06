@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Fab, Typography, Tooltip } from '@mui/material'
+import { Fab, Typography, Tooltip, ButtonGroup, Button } from '@mui/material'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { Task } from './types'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import FilterAltIcon from '@mui/icons-material/FilterAlt'
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]) // список задач
@@ -74,50 +75,67 @@ const App: React.FC = () => {
   })
 
   return (
-    <div>
-      <Typography variant='h2' gutterBottom style={{ textAlign: 'center' }}>
-        Список задач
-      </Typography>
+    <>
+      <header style={{ textAlign: 'center' }}>
+        <Typography variant='h1' gutterBottom style={{ fontSize: '3rem' }}>
+          Список задач
+        </Typography>
+      </header>
 
-      {/* Добавление новой задачи */}
-      {!isCreatingTask ? (
-        <>
-          <Tooltip title={'Добавить новую задачу'} placement='top-start'>
-            <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='add' onClick={handleAddIconClick}>
-              <AddIcon />
-            </Fab>
-          </Tooltip>
-        </>
-      ) : (
-        <>
-          <Tooltip title={'Отменить создание задачи'} placement='top-start'>
-            <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='cancel' onClick={handleAddIconClick}>
-              {<RemoveIcon />}
-            </Fab>
-          </Tooltip>
-          <TaskForm onCreateTask={createTask} onCancelCreate={cancelAddTask} />
-        </>
-      )}
-
-      {/* Фильтры задач */}
       <div>
-        <label>
-          <input type='checkbox' checked={showAllTasks} onChange={handleShowAllTasksChange} />
-          Показать все задачи
-        </label>
-        <label>
-          <input type='checkbox' checked={showCompleted} onChange={handleShowCompletedChange} />
-          Показать выполненные задачи
-        </label>
-        <label>
-          <input type='checkbox' checked={showIncomplete} onChange={handleShowIncompleteChange} />
-          Показать невыполненные задачи
-        </label>
-      </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
+          {/* Добавление новой задачи */}
+          {!isCreatingTask ? (
+            <>
+              <Tooltip title={'Добавить новую задачу'} placement='top-start'>
+                <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='add' onClick={handleAddIconClick}>
+                  <AddIcon />
+                </Fab>
+              </Tooltip>
+            </>
+          ) : (
+            <>
+              <Tooltip title={'Отменить создание задачи'} placement='top-start'>
+                <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='cancel' onClick={handleAddIconClick}>
+                  {<RemoveIcon />}
+                </Fab>
+              </Tooltip>
+            </>
+          )}
 
-      {/* Список задач */}
-      <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
-    </div>
+          {/* Фильтры задач */}
+          <div style={{ paddingTop: '0.5rem' }}>
+            <ButtonGroup variant='outlined' aria-label='outlined button group'>
+              <Button
+                startIcon={<FilterAltIcon />}
+                onClick={handleShowAllTasksChange}
+                variant={showAllTasks === true ? 'contained' : 'outlined'}
+              >
+                Все задачи
+              </Button>
+              <Button
+                startIcon={<FilterAltIcon />}
+                onClick={handleShowCompletedChange}
+                variant={showCompleted === true ? 'contained' : 'outlined'}
+              >
+                Выполненные задачи
+              </Button>
+              <Button
+                startIcon={<FilterAltIcon />}
+                onClick={handleShowIncompleteChange}
+                variant={showIncomplete === true ? 'contained' : 'outlined'}
+              >
+                Невыполненные задачи
+              </Button>
+            </ButtonGroup>
+          </div>
+        </div>
+        {isCreatingTask ? <TaskForm onCreateTask={createTask} onCancelCreate={cancelAddTask} /> : null}
+
+        {/* Список задач */}
+        <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
+      </div>
+    </>
   )
 }
 

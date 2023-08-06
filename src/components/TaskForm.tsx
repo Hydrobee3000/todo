@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Task } from '../types'
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, Divider } from '@mui/material'
 
 interface TaskFormProps {
   onCreateTask: (newTask: Task) => void
@@ -23,7 +23,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginBottom: '2rem' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginBottom: '3rem' }}>
       <TextField
         style={{ marginBottom: '1rem' }}
         id='outlined-basic'
@@ -53,6 +53,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
           Отменить
         </Button>
       </div>
+      <Divider style={{ marginTop: '3rem' }} />
     </form>
   )
 }
