@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Fab, Typography, Tooltip, ButtonGroup, Button } from '@mui/material'
+import { Fab, Typography, Tooltip, ButtonGroup, Button, AppBar, Toolbar } from '@mui/material'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { Task } from './types'
@@ -76,13 +76,21 @@ const App: React.FC = () => {
 
   return (
     <>
-      <header style={{ textAlign: 'center' }}>
+      <AppBar position='static' style={{ marginBottom: '2rem' }}>
+        <Toolbar style={{ paddingTop: '0.3rem' }}>
+          <Typography variant='h1' gutterBottom style={{ fontSize: '3rem' }}>
+            Список дел
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      {/* <header style={{ textAlign: 'center' }}>
         <Typography variant='h1' gutterBottom style={{ fontSize: '3rem' }}>
           Список задач
         </Typography>
-      </header>
+      </header> */}
 
-      <div>
+      <div style={{ padding: '0 20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
           {/* Добавление новой задачи */}
           {!isCreatingTask ? (
@@ -130,6 +138,8 @@ const App: React.FC = () => {
             </ButtonGroup>
           </div>
         </div>
+
+        {/* Форма добавления новой задачи */}
         {isCreatingTask ? <TaskForm onCreateTask={createTask} onCancelCreate={cancelAddTask} /> : null}
 
         {/* Список задач */}

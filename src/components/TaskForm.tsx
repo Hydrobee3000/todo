@@ -53,6 +53,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
           Отменить
         </Button>
       </div>
+
       <Divider style={{ marginTop: '3rem' }} />
     </form>
   )
