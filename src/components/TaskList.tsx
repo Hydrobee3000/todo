@@ -1,16 +1,19 @@
 import React from 'react'
-import TaskItem from './TaskItem'
 import { Task } from '../types'
+import TaskItem from './TaskItem'
 
-const TaskList: React.FC<{
+interface TaskListProps {
   tasks: Task[]
   onDeleteTask: (taskId: number) => void
   onToggleTask: (taskId: number) => void
-}> = ({ tasks, onDeleteTask, onToggleTask }) => {
+  onUpdateTask: (updatedTask: Task) => void // Добавляем новый пропс
+}
+
+const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask, onToggleTask, onUpdateTask }) => {
   return (
     <div>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} />
+        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} onUpdateTask={onUpdateTask} />
       ))}
     </div>
   )

@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import { Task } from '../types'
 import { TextField, Button } from '@mui/material'
 
-const TaskForm: React.FC<{ onCreateTask: (newTask: Task) => void }> = ({ onCreateTask }) => {
+interface TaskFormProps {
+  onCreateTask: (newTask: Task) => void
+}
+
+const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (title.trim()) {
-      onCreateTask({ title, description, id: Date.now(), completed: false })
+      const newTask: Task = { title, description, id: Date.now(), completed: false }
+      onCreateTask(newTask)
       setTitle('')
       setDescription('')
     }
@@ -19,22 +24,20 @@ const TaskForm: React.FC<{ onCreateTask: (newTask: Task) => void }> = ({ onCreat
     <form onSubmit={handleSubmit}>
       <TextField
         id='outlined-basic'
-        label='Название задачи'
         variant='outlined'
+        label='Название задачи'
         placeholder='Введите название задачи'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-
       <TextField
         id='outlined-basic'
-        label='Описание задачи'
         variant='outlined'
+        label='Описание задачи'
         placeholder='Введите описание задачи'
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-
       <Button type='submit' variant='outlined'>
         Добавить задачу
       </Button>

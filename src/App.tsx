@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { Task } from './types'
+import { Typography } from '@mui/material'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
-import { Task } from './types'
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -18,11 +19,17 @@ const App: React.FC = () => {
     setTasks(tasks.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)))
   }
 
+  const updateTask = (updatedTask: Task) => {
+    setTasks((prevTasks) => prevTasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)))
+  }
+
   return (
     <div>
-      <h1>Список задач</h1>
+      <Typography variant='h2' gutterBottom>
+        Список задач
+      </Typography>
       <TaskForm onCreateTask={createTask} />
-      <TaskList tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} />
+      <TaskList tasks={tasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
     </div>
   )
 }
