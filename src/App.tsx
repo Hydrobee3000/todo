@@ -91,20 +91,25 @@ const App: React.FC = () => {
       </header> */}
 
       <div style={{ padding: '0 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem' }}>
           {/* Добавление новой задачи */}
           {!isCreatingTask ? (
             <>
-              <Tooltip title={'Добавить новую задачу'} placement='top-start'>
-                <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='add' onClick={handleAddIconClick}>
+              <Tooltip title={'Добавить новую задачу'} placement='right' style={{ marginLeft: '1rem' }}>
+                <Fab style={{ backgroundColor: '#019e01', color: 'white' }} aria-label='add' onClick={handleAddIconClick}>
                   <AddIcon />
                 </Fab>
               </Tooltip>
             </>
           ) : (
             <>
-              <Tooltip title={'Отменить создание задачи'} placement='top-start'>
-                <Fab style={{ marginBottom: '1rem' }} color='primary' aria-label='cancel' onClick={handleAddIconClick}>
+              <Tooltip title={'Отменить создание задачи'} placement='right'>
+                <Fab
+                  style={{ backgroundColor: '#e53935', color: 'white' }}
+                  color='primary'
+                  aria-label='cancel'
+                  onClick={handleAddIconClick}
+                >
                   {<RemoveIcon />}
                 </Fab>
               </Tooltip>

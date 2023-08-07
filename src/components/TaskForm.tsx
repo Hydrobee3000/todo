@@ -46,10 +46,14 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
       />
 
       <div>
-        <Button type='submit' variant='contained' style={{ marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}>
+        <Button
+          type='submit'
+          variant='contained'
+          style={{ backgroundColor: '#019e01', marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}
+        >
           Добавить задачу
         </Button>
-        <Button variant='outlined' onClick={onCancelCreate} style={{ width: '7rem' }}>
+        <Button variant='outlined' onClick={onCancelCreate} style={{ borderColor: 'red', color: 'red', width: '7rem' }}>
           Отменить
         </Button>
       </div>

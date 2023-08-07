@@ -20,7 +20,7 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
 
   return (
     <>
-      <CardContent style={{ display: 'flex', flexDirection: 'column' }}>
+      <CardContent style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
         <TextField
           style={{ marginBottom: '1rem' }}
           id='outlined-basic'
@@ -31,7 +31,6 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
-          style={{ marginBottom: '1rem' }}
           id='outlined-basic'
           variant='outlined'
           label='Описание задачи'
@@ -42,11 +41,16 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
           rows={4}
         />
       </CardContent>
-      <CardActions>
-        <Button variant='contained' type='button' onClick={handleSubmit}>
+      <CardActions style={{ padding: '0 1.5rem 1.5rem' }}>
+        <Button
+          variant='contained'
+          type='button'
+          onClick={handleSubmit}
+          style={{ marginRight: '0.5rem', backgroundColor: '#019e01', color: 'white' }}
+        >
           Сохранить
         </Button>
-        <Button variant='outlined' type='button' onClick={onCancelEdit}>
+        <Button variant='outlined' type='button' onClick={onCancelEdit} style={{ borderColor: 'red', color: 'red' }}>
           Отменить
         </Button>
       </CardActions>
