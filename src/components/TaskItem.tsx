@@ -45,11 +45,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
               {task.description}
             </Typography>
 
-            <Button
-              variant='outlined'
-              onClick={() => onToggleTask(task.id)}
-              style={task.completed ? { backgroundColor: '#ff000064' } : { backgroundColor: '#00800057' }}
-            >
+            <Button variant='outlined' onClick={() => onToggleTask(task.id)} color={task.completed ? 'error' : 'success'}>
               {task.completed ? 'Отменить' : 'Выполнить'}
             </Button>
           </CardContent>
@@ -88,9 +84,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
             <Tooltip title={'Удалить'} placement='bottom-end'>
               <Fab
                 size='small'
-                color='secondary'
+                color='error'
                 aria-label='delete'
-                style={{ margin: '0', marginTop: '0.4rem', backgroundColor: '#e53935', boxShadow: 'none' }}
+                style={{ margin: '0', marginTop: '0.4rem', boxShadow: 'none' }}
                 onClick={() => onDeleteTask(task.id)}
               >
                 <DeleteIcon />
