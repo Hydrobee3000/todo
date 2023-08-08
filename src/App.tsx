@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Fab, Typography, Tooltip, ButtonGroup, Button, AppBar, Toolbar } from '@mui/material'
-import TaskForm from './components/TaskForm'
-import TaskList from './components/TaskList'
-import { Task } from './types'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
+import useLocalStorageList from './hooks/useLocaleStorageList'
+import TaskForm from './components/TaskForm'
+import TaskList from './components/TaskList'
+import { Task } from './types'
 
 const App: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]) // список задач
+  const { state: tasks, setState: setTasks } = useLocalStorageList<Task[]>('tasks', []) // список задач
   const [isCreatingTask, setIsCreatingTask] = useState(false) // создается ли новая задача
   // фильтрация
   const [showAllTasks, setShowAllTasks] = useState(true)
@@ -78,17 +79,11 @@ const App: React.FC = () => {
     <>
       <AppBar position='static' style={{ marginBottom: '2rem' }}>
         <Toolbar style={{ paddingTop: '0.3rem' }}>
-          <Typography variant='h1' gutterBottom style={{ fontSize: '3rem' }}>
+          <Typography variant='h2' gutterBottom style={{ fontSize: '3.5rem' }}>
             Список дел
           </Typography>
         </Toolbar>
       </AppBar>
-
-      {/* <header style={{ textAlign: 'center' }}>
-        <Typography variant='h1' gutterBottom style={{ fontSize: '3rem' }}>
-          Список задач
-        </Typography>
-      </header> */}
 
       <div style={{ padding: '0 20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem', marginLeft: '1rem' }}>
