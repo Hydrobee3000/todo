@@ -36,12 +36,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
         </div>
       ) : (
         <div style={{ display: 'flex' }}>
-          <CardContent style={{ marginRight: 'auto', width: '90%' }}>
+          <CardContent style={{ marginRight: 'auto', width: '90%', wordWrap: 'break-word' }}>
             <Typography variant='h3' gutterBottom>
               {task.title}
             </Typography>
-
-            <Typography variant='body1' gutterBottom>
+            <Typography variant='body1' gutterBottom style={{ marginBottom: '1.5rem', whiteSpace: 'pre-line' }}>
               {task.description}
             </Typography>
 
@@ -60,15 +59,6 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
               padding: ' 0.5rem ',
             }}
           >
-            {/* <Button variant='outlined' onClick={() => onToggleTask(task.id)}>
-              {task.completed ? 'Отменить' : 'Выполнить'}
-            </Button>
-            <Button variant='outlined' onClick={handleEditClick}>
-              Редактировать
-            </Button>
-            <Button variant='outlined' onClick={() => onDeleteTask(task.id)}>
-              Удалить
-            </Button> */}
             <Tooltip title={'Редактировать'} placement='top-end'>
               <Fab
                 size='small'
