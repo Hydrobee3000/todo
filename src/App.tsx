@@ -78,7 +78,7 @@ const App: React.FC = () => {
   return (
     <>
       <AppBar position='static' style={{ marginBottom: '2rem' }}>
-        <Toolbar style={{ paddingTop: '0.3rem' }}>
+        <Toolbar style={{ paddingTop: '0.5rem' }}>
           <Typography variant='h2' gutterBottom style={{ fontSize: '3.5rem' }}>
             Список дел
           </Typography>
