@@ -29,7 +29,14 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
   }
 
   return (
-    <Card sx={{ minWidth: 275, marginBottom: '3rem', borderRadius: '0.6rem' }}>
+    <Card
+      sx={{
+        minWidth: 275,
+        marginBottom: '3rem',
+        borderRadius: '0.6rem',
+        backgroundColor: task.completed ? 'rgba(2, 200, 12, 0.077)' : null,
+      }}
+    >
       {isEditing ? (
         <div>
           <TaskEditForm task={task} onSaveTask={handleSaveTask} onCancelEdit={handleCancelEdit} />
@@ -37,10 +44,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
       ) : (
         <div style={{ display: 'flex' }}>
           <CardContent style={{ marginRight: 'auto', width: '90%', wordWrap: 'break-word' }}>
-            <Typography variant='h3' gutterBottom>
+            <Typography variant='h4' gutterBottom>
               {task.title}
             </Typography>
-            <Typography variant='body1' gutterBottom style={{ marginBottom: '1.5rem', whiteSpace: 'pre-line' }}>
+            <Typography variant='body2' gutterBottom style={{ marginBottom: '1.5rem', whiteSpace: 'pre-line' }}>
               {task.description}
             </Typography>
 
