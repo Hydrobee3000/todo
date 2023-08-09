@@ -76,8 +76,8 @@ const App: React.FC = () => {
   })
 
   return (
-    <>
-      <AppBar position='static' style={{ marginBottom: '2rem' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <AppBar position='static' style={{ marginBottom: '2rem', minHeight: '8vh' }}>
         <Toolbar style={{ paddingTop: '0.5rem' }}>
           <Typography variant='h2' gutterBottom style={{ fontSize: '3.5rem' }}>
             Список дел
@@ -85,7 +85,7 @@ const App: React.FC = () => {
         </Toolbar>
       </AppBar>
 
-      <div style={{ padding: '0 20px' }}>
+      <div style={{ padding: '0 20px', flex: 1, overflowY: 'auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem', marginLeft: '1rem' }}>
           {/* Добавление новой задачи */}
           {!isCreatingTask ? (
@@ -140,7 +140,7 @@ const App: React.FC = () => {
         {/* Список задач */}
         <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
       </div>
-    </>
+    </div>
   )
 }
 
