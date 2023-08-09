@@ -32,6 +32,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
         placeholder='Введите название задачи'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        autoComplete='off'
       />
       <TextField
         style={{ marginBottom: '1rem' }}
