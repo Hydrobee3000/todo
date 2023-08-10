@@ -4,8 +4,8 @@ import TaskForm from './components/Task/TaskForms/TaskForm'
 import TaskList from './components/Task/TaskList/TaskList'
 import { Task } from './types'
 import Header from './components/Header/Header'
-import TaskFilters from './components/Task/TaskActions/TaskFilters'
-import TaskCreateButton from './components/Task/TaskActions/TaskCreateButton'
+import TaskActions from './components/Task/TaskActions/TaskActions'
+import { Box } from '@mui/material'
 
 const App: React.FC = () => {
   const { state: tasks, setState: setTasks } = useLocalStorageList<Task[]>('tasks', []) // список задач
@@ -23,23 +23,19 @@ const App: React.FC = () => {
     setIsCreatingTask(false)
   }
 
-  // Удаление задачи по id
-  const deleteTask = (taskId: number) => {
-    setTasks(tasks.filter((task) => task.id !== taskId))
-  }
-
-  // Переключения статуса выполнения задачи по id
-  const toggleTask = (taskId: number) => {
-    setTasks(tasks.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)))
-  }
-
   // Обновление задачи
   const updateTask = (updatedTask: Task) => {
     setTasks((prevTasks) => prevTasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)))
   }
 
-  const handleAddIconClick = () => {
-    setIsCreatingTask(!isCreatingTask)
+  // Удаление задачи
+  const deleteTask = (taskId: number) => {
+    setTasks(tasks.filter((task) => task.id !== taskId))
+  }
+
+  // Переключения статуса выполнения задачи
+  const toggleTask = (taskId: number) => {
+    setTasks(tasks.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)))
   }
 
   // Фильтрация задач
@@ -51,24 +47,25 @@ const App: React.FC = () => {
   })
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       <Header />
 
-      <div style={{ padding: '0 20px', flex: 1, overflowY: 'auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem', marginLeft: '1rem' }}>
-          {/* Добавление новой задачи */}
-          <TaskCreateButton isCreatingTask={isCreatingTask} setIsCreatingTask={setIsCreatingTask} />
-          {/* Фильтры задач */}
-          <TaskFilters showTasks={showTasks} setShowTasks={setShowTasks} />
-        </div>
+      <Box style={{ padding: '0 20px', flex: 1, overflowY: 'auto' }}>
+        {/* Действия задач (добавление, фильтрация) */}
+        <TaskActions
+          isCreatingTask={isCreatingTask}
+          setIsCreatingTask={setIsCreatingTask}
+          showTasks={showTasks}
+          setShowTasks={setShowTasks}
+        />
 
         {/* Форма добавления новой задачи */}
         <TaskForm isCreatingTask={isCreatingTask} onCreateTask={createTask} onCancelCreate={cancelAddTask} />
 
         {/* Список задач */}
         <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

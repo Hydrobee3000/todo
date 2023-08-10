@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import Button from '@mui/material/Button'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
@@ -14,7 +14,7 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({ showTasks, setShowTasks }) =>
   }
 
   return (
-    <ButtonGroup variant='outlined' aria-label='outlined button group'>
+    <ButtonGroup variant='outlined' aria-label='outlined button group' style={{ height: '3rem' }}>
       <Button
         startIcon={<FilterAltIcon />}
         variant={showTasks === 'all' ? 'contained' : 'outlined'}
