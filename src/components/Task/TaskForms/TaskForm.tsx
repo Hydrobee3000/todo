@@ -3,11 +3,12 @@ import { Task } from '../../../types'
 import { TextField, Button, Divider } from '@mui/material'
 
 interface TaskFormProps {
+  isCreatingTask: boolean
   onCreateTask: (newTask: Task) => void
   onCancelCreate: () => void
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCancelCreate }) => {
   const [title, setTitle] = useState('') // заголовок
   const [description, setDescription] = useState('') // описание
 
@@ -20,6 +21,11 @@ const TaskForm: React.FC<TaskFormProps> = ({ onCreateTask, onCancelCreate }) => 
       setTitle('')
       setDescription('')
     }
+  }
+
+  // Не отображаем форму
+  if (!isCreatingTask) {
+    return null
   }
 
   return (

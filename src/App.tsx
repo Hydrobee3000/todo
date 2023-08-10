@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { Fab, Tooltip } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import RemoveIcon from '@mui/icons-material/Remove'
 import useLocalStorageList from './hooks/useLocaleStorageList'
 import TaskForm from './components/Task/TaskForms/TaskForm'
 import TaskList from './components/Task/TaskList/TaskList'
 import { Task } from './types'
 import Header from './components/Header/Header'
 import TaskFilters from './components/Task/TaskActions/TaskFilters'
+import TaskCreateButton from './components/Task/TaskActions/TaskCreateButton'
 
 const App: React.FC = () => {
   const { state: tasks, setState: setTasks } = useLocalStorageList<Task[]>('tasks', []) // список задач
@@ -59,30 +57,13 @@ const App: React.FC = () => {
       <div style={{ padding: '0 20px', flex: 1, overflowY: 'auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem', marginLeft: '1rem' }}>
           {/* Добавление новой задачи */}
-          {!isCreatingTask ? (
-            <>
-              <Tooltip title={'Добавить новую задачу'} placement='right'>
-                <Fab color='success' aria-label='add' onClick={handleAddIconClick}>
-                  <AddIcon />
-                </Fab>
-              </Tooltip>
-            </>
-          ) : (
-            <>
-              <Tooltip title={'Отменить создание задачи'} placement='right'>
-                <Fab color='error' aria-label='cancel' onClick={handleAddIconClick}>
-                  {<RemoveIcon />}
-                </Fab>
-              </Tooltip>
-            </>
-          )}
-
+          <TaskCreateButton isCreatingTask={isCreatingTask} setIsCreatingTask={setIsCreatingTask} />
           {/* Фильтры задач */}
           <TaskFilters showTasks={showTasks} setShowTasks={setShowTasks} />
         </div>
 
         {/* Форма добавления новой задачи */}
-        {isCreatingTask ? <TaskForm onCreateTask={createTask} onCancelCreate={cancelAddTask} /> : null}
+        <TaskForm isCreatingTask={isCreatingTask} onCreateTask={createTask} onCancelCreate={cancelAddTask} />
 
         {/* Список задач */}
         <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />
