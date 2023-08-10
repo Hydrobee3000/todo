@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Task } from '../types'
-import TaskEditForm from './TaskEditForm'
+import { Task } from '../../../../types'
+import TaskEditForm from '../../TaskForms/TaskEditForm'
 import { Button, Card, CardActions, CardContent, Typography, Divider, Fab, Tooltip } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'

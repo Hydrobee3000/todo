@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Task } from '../types'
+import { Task } from '../../../types'
 import { TextField, Button, Divider } from '@mui/material'
 
 interface TaskFormProps {

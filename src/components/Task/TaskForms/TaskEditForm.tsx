@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Task } from '../types'
-import { Button, CardActions, CardContent, TextField, Typography } from '@mui/material'
+import { Task } from '../../../types'
+import { Button, CardActions, CardContent, TextField } from '@mui/material'
 
 interface TaskEditFormProps {
   task: Task
@@ -41,6 +41,7 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
           rows={4}
         />
       </CardContent>
+
       <CardActions style={{ padding: '0 1.5rem 1.5rem' }}>
         <Button
           variant='contained'
@@ -50,6 +51,7 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
         >
           Сохранить
         </Button>
+
         <Button variant='outlined' type='button' onClick={onCancelEdit} style={{ borderColor: 'red', color: 'red' }}>
           Отменить
         </Button>
