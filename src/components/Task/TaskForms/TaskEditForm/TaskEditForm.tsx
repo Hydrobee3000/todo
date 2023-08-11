@@ -9,6 +9,8 @@ interface TaskEditFormProps {
   onCancelEdit: () => void
 }
 
+// Форма редактирования существующей задачи
+
 const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelEdit }) => {
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)

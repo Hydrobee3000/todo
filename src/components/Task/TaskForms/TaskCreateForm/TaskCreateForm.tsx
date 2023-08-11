@@ -9,6 +9,8 @@ interface TaskFormProps {
   onCancelCreate: () => void
 }
 
+// Форма создания новой задачи
+
 const TaskCreateForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCancelCreate }) => {
   const [title, setTitle] = useState('') // заголовок
   const [description, setDescription] = useState('') // описание

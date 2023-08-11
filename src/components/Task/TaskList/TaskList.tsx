@@ -1,6 +1,7 @@
 import React from 'react'
-import { Task } from '../../../types'
+import { Box } from '@mui/material'
 import TaskItem from './TaskItem/TaskItem'
+import { Task } from '../../../types'
 
 interface TaskListProps {
   tasks: Task[]
@@ -9,13 +10,24 @@ interface TaskListProps {
   onUpdateTask: (updatedTask: Task) => void // Добавляем новый пропс
 }
 
+// Список всех задач
+
 const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask, onToggleTask, onUpdateTask }) => {
   return (
-    <div style={{ paddingBottom: '1rem' }}>
+    <Box>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} onUpdateTask={onUpdateTask} />
+        <div style={{ display: 'flex' }}>
+          <p>fds</p>
+          <TaskItem
+            key={task.id}
+            task={task}
+            onDeleteTask={onDeleteTask}
+            onToggleTask={onToggleTask}
+            onUpdateTask={onUpdateTask}
+          />
+        </div>
       ))}
-    </div>
+    </Box>
   )
 }
 
