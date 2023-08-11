@@ -16,6 +16,7 @@ const TaskCreateButton: React.FC<TaskCreateButtonProps> = ({ isCreatingTask, set
   return (
     <Tooltip title={isCreatingTask ? 'Отменить создание задачи' : 'Добавить новую задачу'} placement='right'>
       <Fab
+        size='large'
         color={isCreatingTask ? 'error' : 'success'}
         aria-label={isCreatingTask ? 'cancel' : 'add'}
         onClick={handleAddIconClick}

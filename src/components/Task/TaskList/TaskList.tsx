@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import TaskItem from './TaskItem/TaskItem'
 import { Task } from '../../../types'
 
@@ -14,20 +13,11 @@ interface TaskListProps {
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask, onToggleTask, onUpdateTask }) => {
   return (
-    <Box>
+    <>
       {tasks.map((task) => (
-        <div style={{ display: 'flex' }}>
-          <p>fds</p>
-          <TaskItem
-            key={task.id}
-            task={task}
-            onDeleteTask={onDeleteTask}
-            onToggleTask={onToggleTask}
-            onUpdateTask={onUpdateTask}
-          />
-        </div>
+        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} onUpdateTask={onUpdateTask} />
       ))}
-    </Box>
+    </>
   )
 }
 
