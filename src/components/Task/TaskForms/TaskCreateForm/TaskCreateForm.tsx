@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Task } from '../../../types'
 import { TextField, Button, Divider, Box } from '@mui/material'
+import { Task } from '../../../../types'
+import s from './TaskCreateForm.module.scss'
 
 interface TaskFormProps {
   isCreatingTask: boolean
@@ -8,7 +9,7 @@ interface TaskFormProps {
   onCancelCreate: () => void
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCancelCreate }) => {
+const TaskCreateForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCancelCreate }) => {
   const [title, setTitle] = useState('') // заголовок
   const [description, setDescription] = useState('') // описание
 
@@ -29,9 +30,9 @@ const TaskForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCan
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginBottom: '3rem' }}>
+    <form onSubmit={handleSubmit} className={s.form}>
       <TextField
-        style={{ marginBottom: '1rem' }}
+        className={s.form__title}
         id='outlined-basic'
         variant='outlined'
         label='Название задачи'
@@ -41,7 +42,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCan
         autoComplete='off'
       />
       <TextField
-        style={{ marginBottom: '1rem' }}
+        className={s.form__description}
         id='outlined-basic'
         variant='outlined'
         label='Описание задачи'
@@ -53,21 +54,17 @@ const TaskForm: React.FC<TaskFormProps> = ({ isCreatingTask, onCreateTask, onCan
       />
 
       <Box>
-        <Button
-          type='submit'
-          variant='contained'
-          style={{ backgroundColor: '#019e01', marginLeft: 'auto', marginRight: '1rem', width: '12rem' }}
-        >
+        <Button className={s.form__button_add} variant='contained' type='submit'>
           Добавить задачу
         </Button>
-        <Button variant='outlined' onClick={onCancelCreate} style={{ borderColor: 'red', color: 'red', width: '7rem' }}>
+        <Button className={s.form__button_cancel} variant='outlined' onClick={onCancelCreate}>
           Отменить
         </Button>
       </Box>
 
-      <Divider style={{ marginTop: '3rem' }} />
+      <Divider className={s.divider} />
     </form>
   )
 }
 
-export default TaskForm
+export default TaskCreateForm

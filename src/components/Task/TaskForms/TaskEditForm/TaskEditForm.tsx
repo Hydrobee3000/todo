@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Task } from '../../../types'
 import { Button, CardActions, CardContent, TextField } from '@mui/material'
+import { Task } from '../../../../types'
+import s from './TaskEditForm.module.scss'
 
 interface TaskEditFormProps {
   task: Task
@@ -20,10 +21,9 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
 
   return (
     <>
-      <CardContent style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+      <CardContent className={s.content}>
         <TextField
-          style={{ marginBottom: '1rem' }}
-          id='outlined-basic'
+          className={s.title}
           variant='outlined'
           label='Название задачи'
           placeholder='Введите название задачи'
@@ -31,28 +31,21 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
-          id='outlined-basic'
           variant='outlined'
           label='Описание задачи'
           placeholder='Введите описание задачи'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           multiline
-          rows={4}
+          rows={5}
         />
       </CardContent>
 
-      <CardActions style={{ padding: '0 1.5rem 1.5rem' }}>
-        <Button
-          variant='contained'
-          type='button'
-          onClick={handleSubmit}
-          style={{ marginRight: '0.5rem', backgroundColor: '#019e01', color: 'white' }}
-        >
+      <CardActions className={s.actions}>
+        <Button className={s.btn__save} variant='contained' type='button' onClick={handleSubmit}>
           Сохранить
         </Button>
-
-        <Button variant='outlined' type='button' onClick={onCancelEdit} style={{ borderColor: 'red', color: 'red' }}>
+        <Button className={s.btn__cancel} variant='outlined' type='button' onClick={onCancelEdit}>
           Отменить
         </Button>
       </CardActions>

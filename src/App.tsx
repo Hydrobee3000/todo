@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import useLocalStorageList from './hooks/useLocaleStorageList'
-import TaskForm from './components/Task/TaskForms/TaskForm'
-import TaskList from './components/Task/TaskList/TaskList'
-import { Task } from './types'
-import Header from './components/Header/Header'
-import TaskActions from './components/Task/TaskActions/TaskActions'
 import { Box } from '@mui/material'
+import useLocalStorageList from './hooks/useLocaleStorageList'
+import TaskCreateForm from './components/Task/TaskForms/TaskCreateForm/TaskCreateForm'
+import TaskActions from './components/Task/TaskActions/TaskActions'
+import TaskList from './components/Task/TaskList/TaskList'
+import Header from './components/Header/Header'
+import { Task } from './types'
+import './App.scss'
 
 const App: React.FC = () => {
   const { state: tasks, setState: setTasks } = useLocalStorageList<Task[]>('tasks', []) // список задач
@@ -47,10 +48,10 @@ const App: React.FC = () => {
   })
 
   return (
-    <Box style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <Box className='app'>
       <Header />
 
-      <Box style={{ padding: '0 20px', flex: 1, overflowY: 'auto' }}>
+      <Box className='app__body'>
         {/* Действия задач (добавление, фильтрация) */}
         <TaskActions
           isCreatingTask={isCreatingTask}
@@ -60,7 +61,7 @@ const App: React.FC = () => {
         />
 
         {/* Форма добавления новой задачи */}
-        <TaskForm isCreatingTask={isCreatingTask} onCreateTask={createTask} onCancelCreate={cancelAddTask} />
+        <TaskCreateForm isCreatingTask={isCreatingTask} onCreateTask={createTask} onCancelCreate={cancelAddTask} />
 
         {/* Список задач */}
         <TaskList tasks={filteredTasks} onDeleteTask={deleteTask} onToggleTask={toggleTask} onUpdateTask={updateTask} />

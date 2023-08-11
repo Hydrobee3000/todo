@@ -1,6 +1,7 @@
 import React from 'react'
 import TaskCreateButton from './TaskCreateButton/TaskCreateButton'
 import TaskFilters from './TaskFilters/TaskFilters'
+import s from './TaskActions.module.scss'
 
 interface TaskActionsProps {
   isCreatingTask: boolean
@@ -11,7 +12,7 @@ interface TaskActionsProps {
 
 const TaskActions: React.FC<TaskActionsProps> = ({ isCreatingTask, setIsCreatingTask, showTasks, setShowTasks }) => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3rem', marginLeft: '1rem' }}>
+    <div className={s.task__actions}>
       {/* Добавление новой задачи */}
       <TaskCreateButton isCreatingTask={isCreatingTask} setIsCreatingTask={setIsCreatingTask} />
       {/* Фильтрация задач */}

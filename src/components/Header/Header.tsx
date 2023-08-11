@@ -1,10 +1,11 @@
 import { Typography, AppBar, Toolbar } from '@mui/material'
+import s from './Header.module.scss'
 
 const Header: React.FC = () => {
   return (
-    <AppBar position='static' style={{ marginBottom: '2rem', minHeight: '8vh' }}>
-      <Toolbar style={{ paddingTop: '0.5rem' }}>
-        <Typography variant='h2' gutterBottom style={{ fontSize: '3.5rem' }}>
+    <AppBar position='static' className={s.header}>
+      <Toolbar>
+        <Typography variant='h2' gutterBottom className={s.header__title}>
           Список дел
         </Typography>
       </Toolbar>

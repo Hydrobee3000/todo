@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+
+  &__title,
+  &__description {
+    margin-bottom: 1rem !important;
+  }
+
+  &__button_add {
+    background-color: #019e01 !important;
+    margin-left: auto !important;
+    margin-right: 1rem !important;
+    width: 12rem !important;
+  }
+
+  &__button_cancel {
+    border-color: red !important ;
+    color: red !important;
+    width: 7rem !important;
+  }
+}
+
+.divider {
+  margin-top: 3rem !important;
+}
