@@ -20,6 +20,7 @@ const TaskCreateButton: React.FC<TaskCreateButtonProps> = ({ isCreatingTask, set
         color={isCreatingTask ? 'error' : 'success'}
         aria-label={isCreatingTask ? 'cancel' : 'add'}
         onClick={handleAddIconClick}
+        data-testid='task-create-button'
       >
         {isCreatingTask ? <RemoveIcon /> : <AddIcon />}
       </Fab>

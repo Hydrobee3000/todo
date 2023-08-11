@@ -15,7 +15,12 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({ showTasks, setShowTasks }) =>
   }
 
   return (
-    <ButtonGroup variant='outlined' aria-label='outlined button group' className={s.task__actions__filters}>
+    <ButtonGroup
+      className={s.task__actions__filters}
+      variant='outlined'
+      aria-label='outlined button group'
+      data-testid='task-filters'
+    >
       <Button
         startIcon={<FilterAltIcon />}
         variant={showTasks === 'all' ? 'contained' : 'outlined'}
