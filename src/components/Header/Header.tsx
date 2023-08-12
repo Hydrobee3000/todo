@@ -8,6 +8,9 @@ const Header: React.FC = () => {
         <Typography variant='h2' gutterBottom className={s.header__title}>
           Список дел
         </Typography>
+        <Typography style={{ marginLeft: 'auto', opacity: '0.1', marginBottom: '3rem' }} variant='body2'>
+          v1 12.08
+        </Typography>
       </Toolbar>
     </AppBar>
   )
