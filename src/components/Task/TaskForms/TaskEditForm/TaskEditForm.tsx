@@ -23,7 +23,7 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({ task, onSaveTask, onCancelE
 
   return (
     <>
-      <CardContent className={s.content}>
+      <CardContent className={s.content} data-testid='task-edit-form'>
         <TextField
           className={s.title}
           variant='outlined'
