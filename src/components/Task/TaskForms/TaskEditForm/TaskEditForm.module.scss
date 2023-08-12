@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem 1.1rem 1.5rem !important;
+
+  .title {
+    margin-bottom: 1.3rem !important;
+  }
+}
+
+.actions {
+  padding: 0 1.5rem 1.5rem !important;
+
+  .btn__save {
+    margin-right: 0.5rem !important;
+    background-color: #019e01 !important;
+  }
+
+  .btn__cancel {
+    border-color: red !important;
+    color: red !important;
+  }
+}
