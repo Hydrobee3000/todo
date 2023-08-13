@@ -34,19 +34,21 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDeleteTask, onToggleTask, o
 
   return (
     <Box className={s.container}>
-      <Fab
-        // className={`${task.completed ? s.btn__complete : s.btn__incomplete}`}
-        size='medium'
-        aria-label='complete-toggle-button'
-        style={{
-          marginRight: '2rem',
-          backgroundColor: task.completed ? '#019e01 ' : 'white',
-          color: task.completed ? 'white' : '',
-        }}
-        onClick={() => onToggleTask(task.id)}
-      >
-        <CheckIcon />
-      </Fab>
+      <Tooltip title={task.completed ? 'Вернуть в работу' : 'Выполнить'} placement='top'>
+        <Fab
+          // className={`${task.completed ? s.btn__complete : s.btn__incomplete}`}
+          size='medium'
+          aria-label='complete-toggle-button'
+          style={{
+            marginRight: '2rem',
+            backgroundColor: task.completed ? '#019e01' : 'white',
+            color: task.completed ? 'white' : '',
+          }}
+          onClick={() => onToggleTask(task.id)}
+        >
+          <CheckIcon />
+        </Fab>
+      </Tooltip>
 
       <Card elevation={2} className={`${s.card} ${task.completed ? s.green : ''}`}>
         {isEditing ? (
