@@ -1,7 +1,23 @@
-.header {
+.header__container {
   padding-top: 0.6rem;
 
-  &__title {
-    font-size: 3rem !important;
+  .header {
+    display: flex;
+    align-items: center;
+
+    &__logo {
+      padding-bottom: 0.9rem;
+      margin-right: 1.5rem;
+    }
+
+    &__title {
+      font-size: 3rem !important;
+    }
+
+    &__version {
+      margin-left: auto;
+      opacity: 0.1;
+      margin-bottom: 3rem;
+    }
   }
 }
