@@ -20,3 +20,5 @@
 >    ```sh
 >    npm start
 >    ```
+
+# Технологии <a name="TechnologiesUsed"></a>
