@@ -22,3 +22,4 @@
 >    ```
 
 # Технологии <a name="TechnologiesUsed"></a>
+- `React`
