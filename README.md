@@ -22,4 +22,6 @@
 >    ```
 
 # Технологии <a name="TechnologiesUsed"></a>
+- `Typescript`
 - `React`
+- `Material UI`
