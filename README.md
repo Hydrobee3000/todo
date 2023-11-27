@@ -25,3 +25,5 @@
 - `Typescript`
 - `React`
 - `Material UI`
+- `localStorage`
+
