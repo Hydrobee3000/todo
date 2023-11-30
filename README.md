@@ -8,7 +8,7 @@
 
 > Клонировать репозиторий
 >    ```sh
->    git clone https://github.com/Hydrobee3000/todo.git
+>    git clone https://github.com/Hydrobee3000/converter.git
 >    ```
 >    
 > Установить зависимости 
