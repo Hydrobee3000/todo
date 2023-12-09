@@ -20,6 +20,11 @@
 >    ```sh
 >    npm start
 >    ```
+> Собрать проект
+>    ```sh
+>    npm run build
+>    ```
+
 
 # Технологии <a name="TechnologiesUsed"></a>
 - `Typescript`
